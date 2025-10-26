@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from typing import List, Optional
+from typing import List
 from models import Todo, TodoCreate, TodoUpdate
 
 
-router = APIRouter
+router = APIRouter()
 
 db: List[Todo] = []
 next_id = 1
@@ -36,7 +36,7 @@ def get_todo(todo_id: int):
     for todo in db:
         if todo.id == todo_id:
             return todo
-    raise HTTPException(stats_code=404, detail="Todo not found")
+    raise HTTPException(status_code=404, detail="Todo not found")
 
 
 @router.put('/todos/{todo_id}', response_model=Todo)

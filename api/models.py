@@ -7,8 +7,10 @@ class Todo(BaseModel):
     task: str
     completed: bool = False
     
+    
 class TodoCreate(BaseModel):
     task: str
+    
     
 class TodoUpdate(BaseModel):
     task: Optional[str] = None
